@@ -1,0 +1,60 @@
+﻿@page
+@model BooksStore.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Author</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Author.AuthorID" />
+            <div class="form-group">
+                <label asp-for="Author.authorName" class="control-label"></label>
+                <input asp-for="Author.authorName" class="form-control" />
+                <span asp-validation-for="Author.authorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author.birthDate" class="control-label"></label>
+                <input asp-for="Author.birthDate" class="form-control" />
+                <span asp-validation-for="Author.birthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author.Address" class="control-label"></label>
+                <input asp-for="Author.Address" class="form-control" />
+                <span asp-validation-for="Author.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author.Phone" class="control-label"></label>
+                <input asp-for="Author.Phone" class="form-control" />
+                <span asp-validation-for="Author.Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author.dateAdded" class="control-label"></label>
+                <input asp-for="Author.dateAdded" class="form-control" />
+                <span asp-validation-for="Author.dateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author.CountryID" class="control-label"></label>
+                <input asp-for="Author.CountryID" class="form-control" />
+                <span asp-validation-for="Author.CountryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

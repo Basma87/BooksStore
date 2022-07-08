@@ -1,0 +1,133 @@
+﻿@page
+@model BooksStore.Models.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Books List</h1>
+
+<p>
+    <a asp-page="Create">Create New Book</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].numberOfPages)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].price)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Book[0].bookCover)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].numberOfCopies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].language)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Book[0].Dimensions)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Book[0].weight)
+            </th>*@
+            @*<th>
+                @Html.DisplayNameFor(model => model.Book[0].dateAdded)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].author)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Book[0].country)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].audience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book[0].category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Book) {
+
+            @Html.HiddenFor(modelItem => item.CountryID)
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfPages)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.bookCover)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numberOfCopies)
+            </td>
+
+            @if (String.IsNullOrEmpty(item.Description))
+            {
+                <td style="color:red">
+                    None
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+             }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.language)
+                </td>
+                @*<td>
+                @Html.DisplayFor(modelItem => item.Dimensions)
+            </td>*@
+                @*<td>
+                @Html.DisplayFor(modelItem => item.weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAdded)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.author.authorName)
+                </td>
+                @*<td>
+                @Html.DisplayFor(modelItem => item.country.CountryID)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.audience.audienceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.category.categoryName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.BookID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.BookID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.BookID">Delete</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>
